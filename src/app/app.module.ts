@@ -5,18 +5,28 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { PostComponent } from './post/post.component';
+import {PostsServiceService} from "./services/posts-service.service";
+import {HttpClientModule} from "@angular/common/http";
+import { ActualJokePipe } from './pipes/actual-joke.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    PostComponent
+    PostComponent,
+    ActualJokePipe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    PostsServiceService
+  ],
+  exports: [
+    ActualJokePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

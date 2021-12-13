@@ -5,10 +5,11 @@
   </section>
   <aside class="aside">
     <h3>Jokes you might enjoy</h3>
-    <div class="card-container card-container--list">
+    <h2 *ngIf="isLoading">Data Loading...</h2>
+    <div class="card-container card-container--list" *ngIf="!isLoading">
       <button
-        *ngFor="let post of posts"
-        [routerLink]="['/post', post.id]"
+        *ngFor="let post of posts | actualJoke: slug"
+        [routerLink]="['/post', post.slug]"
         class="card card-small"
       >
         <span>{{ post.title }}</span>
